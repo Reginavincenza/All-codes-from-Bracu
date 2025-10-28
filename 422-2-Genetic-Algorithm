@@ -1,0 +1,53 @@
+# 8 queen problem
+import numpy as np
+rng = np.random.default_rng()
+population = rng.integers(low=1, high=9, size=(10,8))
+#print(population)
+
+def fitness_checker(population):  #finding out number of clashes
+    pass
+def selection():
+    pass
+def crossover():
+    pass
+def mutation():
+    pass
+
+
+
+## knapsack lab task
+item_value = [60, 100, 120, 80, 30]
+item_weight = [10, 20, 30, 24, 6]
+max_capacity = 50
+kpopulation = [[1, 0, 1, 1, 0], [0, 0, 1, 1, 0], [1, 1, 0, 0, 0], [0, 1, 1, 0, 0]]
+
+def fitness(chromosome):
+    fit_val = 0
+    cap_count = 0
+    for j in range(5):
+        fit_val += (chromosome[j] * item_value[j])
+        # print(fit_val)
+        cap_count += (chromosome[j] * item_weight[j])
+    if cap_count > 50: 
+        fit_val = 0
+    return fit_val
+
+fit_arr = [0, 0, 0, 0]
+for k in range(len(kpopulation)):
+    #print(kpopulation[k])
+    fit_arr[k] = fitness(kpopulation[k])
+#print(fit_arr)
+
+def selection_knapsack(fit_arr, kpopulation):
+    for l in range(len(fit_arr)):
+        max = 0 
+        if max < fit_arr[l]:
+            max = fit_arr[l]
+    index_num = fit_arr.index(max)
+    fit_arr[index_num] = 0
+    return kpopulation[index_num]
+
+p1 = selection_knapsack(fit_arr, kpopulation)
+p2 = selection_knapsack(fit_arr, kpopulation)
+print("Parent 1:", p1, "fitness =", fitness(p1)) # Parent 1: [0, 1, 1, 0, 0] fitness = 220
+print("Parent 2:", p2,"fitness =", fitness(p2))
