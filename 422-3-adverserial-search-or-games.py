@@ -1,5 +1,6 @@
-#Node class for creating tree
 
+
+#Node class for creating tree
 class Node:
     def __init__(self, value=None, children=None):
         self.value = value
